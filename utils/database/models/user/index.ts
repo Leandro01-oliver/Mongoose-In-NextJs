@@ -17,10 +17,4 @@ const schemaUser =  new mongoose.Schema({
     }
 );
 
-export const User = mongoose.model('User', schemaUser);
-
-const createCollectionUser = async()=>{
-    await User.createCollection();
-}
-
-createCollectionUser();
+export const User = mongoose.models.User || mongoose.model('User', schemaUser);
