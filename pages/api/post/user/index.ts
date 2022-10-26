@@ -19,20 +19,23 @@ const handlerPostUser = async (
         await connectMongoose();
 
         if (method === "POST") {
-            await User.create({
+            const user =  await User.create({
                 firstName,
                 lastName,
                 year
-            }).then((result) => {
+            })
+
+            await user.save()
+            .then((result) => {
                 console.log(result);
-                return res.status(200).json(
+                return res.status(201).json(
                     {
                         menssage: "sucess in create user",
                         data: result
                     }
                 )
             }).catch((err) => {
-                return res.status(200).json(
+                return res.status(404).json(
                     {
                         menssage:"erro in create user",
                         typeErro: err,

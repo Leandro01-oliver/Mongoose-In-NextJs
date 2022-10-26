@@ -6,7 +6,7 @@ const schemaUser =  new mongoose.Schema({
             type:String
         },
         lastName:{
-            type:Number
+            type:String
         },
         year:{
             type: Number
@@ -17,4 +17,10 @@ const schemaUser =  new mongoose.Schema({
     }
 );
 
-export const User = mongoose.models.User || mongoose.model('User', schemaUser);
+export const User = mongoose.model('User', schemaUser);
+
+const createCollectionUser = async()=>{
+    await User.createCollection();
+}
+
+createCollectionUser();

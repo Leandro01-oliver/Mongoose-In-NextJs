@@ -17,4 +17,10 @@ const schemaProduct =  new mongoose.Schema({
     }
 );
 
+
 export const Product = mongoose.models.Product || mongoose.model('Product', schemaProduct);
+
+const createCollectionProduct = async()=>{
+    await Product.createCollection();
+}
+createCollectionProduct();

@@ -1,8 +1,8 @@
  import axios from "axios"
 
 
-const getUserAllRepository = async () => {
-   await axios.get('api/get/user/')
+const getUserAllRepository =  () => {
+    axios.get('api/get/user/all/')
   .then((res)=>{
       console.log(res.data);
   })

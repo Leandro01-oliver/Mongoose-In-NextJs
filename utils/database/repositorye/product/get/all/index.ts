@@ -1,8 +1,8 @@
  import axios from "axios"
 
 
-const getProductAllRepository = async () => {
-   await axios.get('api/get/product/')
+const getProductAllRepository =  () => {
+    axios.get('api/get/product/all/')
   .then((res)=>{
       console.log(res.data);
   })

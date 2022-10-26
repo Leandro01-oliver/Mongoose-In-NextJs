@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { User } from "../../../../../utils/database/models/user";
+import { Product } from "../../../../../utils/database/models/product";
 
 
-const  handlerGetUserId = async (req:NextApiRequest,res:NextApiResponse) =>{
+const  handlerDeleteProductId = async (req:NextApiRequest, res:NextApiResponse) =>{
     
     const {
         method
@@ -15,21 +15,22 @@ const  handlerGetUserId = async (req:NextApiRequest,res:NextApiResponse) =>{
     const filter = {
         "_id":id
     };
-    
-    if (method === "GET") {
-        await User.findById(filter)
+
+
+    if (method === "DELETE") {
+        await Product.deleteOne(filter)
         .then((result) => {
             console.log(result);
-            return res.status(200).json(
+            return res.status(204).json(
                 {
-                    menssage: "sucess in get id user",
+                    menssage: "sucess in delete id product",
                     data: result
                 }
             )
         }).catch((err) => {
-            return res.status(200).json(
+            return res.status(404).json(
                 {
-                    menssage:"erro in get id user",
+                    menssage:"erro in delete id product",
                     typeErro: err,
                 }
             )
@@ -38,4 +39,4 @@ const  handlerGetUserId = async (req:NextApiRequest,res:NextApiResponse) =>{
 
 }
 
-export default handlerGetUserId
+export default handlerDeleteProductId

@@ -19,24 +19,29 @@ const handlerPostPoduct = async (
     await connectMongoose();
 
     if (method === "POST") {
-        await Product.create({
+
+        const product = await Product.create({
             title,
             description,
             price
-        }).then((result) => {
-            return res.status(200).json(
+        })
+
+        await product.save()
+        .then((result) => {
+            console.log(result);
+            return res.status(201).json(
                 {
-                    menssage: "sucesso na criação do produto",
+                    menssage: "sucess in create product",
                     data: result
                 }
             )
         }).catch((err) => {
-            return res.status(200).json(
-                    {
-                        menssage:"erro in create product",
-                        typeErro: err,
-                    }
-                )
+            return res.status(404).json(
+                {
+                    menssage:"erro in create product",
+                    typeErro: err,
+                }
+            )
         })
     }
 

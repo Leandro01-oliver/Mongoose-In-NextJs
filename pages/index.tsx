@@ -16,10 +16,26 @@ const Home: NextPage = () => {
    <button
    onClick={()=>{
     const user = new UserController();
-    user.postUserController("João","Paulo",25)
+    user.postUserController("João","Paulo",18.00)
    }}
    >
      Criar um user
+   </button>
+   <button
+   onClick={()=>{
+    const user = new UserController();
+    user.getUserAllController();
+   }}
+   >
+     Pegar  user
+   </button>
+   <button
+   onClick={()=>{
+    const product = new ProductController();
+    product.getProductAllController();
+   }}
+   >
+     Pegar  product
    </button>
    </>
   )
